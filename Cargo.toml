@@ -1,0 +1,18 @@
+[package]
+name = "ExcelConvertor_JY"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[profile.dev]
+opt-level = 0
+
+[profile.release]
+opt-level = 3
+
+[dependencies]
+chrono = "0.4"
+calamine = {version="0.19.1"}
+regex = "1.8.1"
+rust_xlsxwriter = "0.37.0"
