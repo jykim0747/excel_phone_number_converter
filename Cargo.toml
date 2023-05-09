@@ -1,7 +1,9 @@
 [package]
-name = "ExcelConvertor_JY"
+name = "excel_convertor"
 version = "0.1.0"
 edition = "2021"
+description = "A Excel Phone Number Conversion Program"
+authors = ["JY Kim <jykim0747@gmail.com>"]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
