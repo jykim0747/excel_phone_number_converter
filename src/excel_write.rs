@@ -27,7 +27,7 @@ pub fn save_file(
 
     // Add a worksheet to the workbook.
     let worksheet = workbook.add_worksheet();
-    let format = Format::new().set_num_format("dd-mm-yyyy hh:mm::ss");
+    let format = Format::new().set_num_format("yyyy-mm-dd AM/PM hh:mm:ss");
 
     // Write a string to cell (0, 0) = A1.
     for row in 0..item.len() {
