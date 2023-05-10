@@ -1,6 +1,6 @@
 use crate::excel_read::Excel;
 use chrono::{Duration, NaiveDate, NaiveDateTime};
-use rust_xlsxwriter::{Workbook, XlsxError};
+use rust_xlsxwriter::{Workbook, XlsxError, Format};
 
 fn excel_date_to_datetime(excel_date: f64) -> NaiveDateTime {
     let days = excel_date.floor() as i64;
@@ -27,14 +27,14 @@ pub fn save_file(
 
     // Add a worksheet to the workbook.
     let worksheet = workbook.add_worksheet();
+    let format = Format::new().set_num_format("dd-mm-yyyy hh:mm::ss");
 
     // Write a string to cell (0, 0) = A1.
     for row in 0..item.len() {
         for col in 0..excel.get_column() {
             if col == 0 && row != 0 {
                 let raw = &item[row][col].to_string();
-                let exceltime = excel_date_to_datetime(raw.parse::<f64>().unwrap());
-                worksheet.write(row.try_into().unwrap(), col.try_into().unwrap(), &exceltime)?;
+                worksheet.write_number_with_format(row.try_into().unwrap(), col.try_into().unwrap(), raw.parse::<f64>().unwrap(), &format)?;
             } else {
                 worksheet.write(
                     row.try_into().unwrap(),
